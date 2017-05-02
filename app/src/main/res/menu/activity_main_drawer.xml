@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_opinion"
+            android:icon="@drawable/newspaper"
+            android:title="Trusted News" />
+        <item
+            android:id="@+id/nav_reddit"
+            android:icon="@drawable/reddit"
+            android:title="Reddit Politics" />
+        <item
+            android:id="@+id/nav_twitter"
+            android:icon="@drawable/twitter"
+            android:title="Twitter" />
+
+        <item
+            android:id="@+id/nav_wire_services"
+            android:icon="@drawable/bias"
+            android:title="Biased News" />
+
+    </group>
+
+    <group
+
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/settings"
+            android:title="Settings"
+            />
+
+
+    </group>
+
+   
+
+</menu>
