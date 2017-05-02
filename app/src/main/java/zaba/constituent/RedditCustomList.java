@@ -51,7 +51,7 @@ public class RedditCustomList extends ArrayAdapter<String> {
 
 
 
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.newsThumbnail);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.redditThumbnail);
 
 
 

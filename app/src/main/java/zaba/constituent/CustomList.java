@@ -98,23 +98,12 @@ public class CustomList extends ArrayAdapter<String> {
 
         }
 
-        if (newsArticles.get(position).getDescription().length()>40)
-        {
             descriptionText.setText((String) newsArticles.get(position).getDescription());
 
 
             Picasso.with(getContext()).load((String) newsArticles.get(position).getImageURL()).into(imageView);
-        }
-        if(newsArticles.get(position).getDescription()==null)
-        {
-            descriptionText.setText("");
-            imageView.setImageResource(R.drawable.noimage);
-        }
-        else
-        {
-            descriptionText.setText("");
-            imageView.setImageResource(R.drawable.noimage);
-        }
+
+
 
 
 
