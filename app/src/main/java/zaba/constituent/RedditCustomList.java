@@ -2,6 +2,8 @@ package zaba.constituent;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class RedditCustomList extends ArrayAdapter<String> {
 
     private Activity context;
+    private ArrayList bitmaps = new ArrayList<Bitmap>();
 
     private ArrayList<RedditFragment.NewsArticle> newsArticles;
 
@@ -27,6 +30,9 @@ public class RedditCustomList extends ArrayAdapter<String> {
         this.newsArticles = newsArticlesArg;
 
         Log.v("customlist custructor", " this shit went trhough");
+
+        
+
     }
     @Override
     public int getCount() {
@@ -48,18 +54,14 @@ public class RedditCustomList extends ArrayAdapter<String> {
         TextView subreddit = (TextView) rowView.findViewById(R.id.subredditTextView);
         subreddit.setText(newsArticles.get(position).getSource());
 
-
-
-
         ImageView imageView = (ImageView) rowView.findViewById(R.id.redditThumbnail);
 
 
 
 
-        Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(imageView);
-
-
         Log.v("custom list", "all this shit ran");
+
+        Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(imageView);
 
         return rowView;
 
@@ -67,8 +69,8 @@ public class RedditCustomList extends ArrayAdapter<String> {
     }
 
 
-
 }
+
 
 
 
