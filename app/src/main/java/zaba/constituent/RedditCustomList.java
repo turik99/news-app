@@ -56,12 +56,7 @@ public class RedditCustomList extends ArrayAdapter<String> {
 
 
 
-
-
-
-        Picasso.with(getContext()).load((String) newsArticles.get(position).getImageURL()).into(imageView);
-
-
+        Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(imageView);
 
 
         Log.v("custom list", "all this shit ran");

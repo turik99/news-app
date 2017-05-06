@@ -61,7 +61,7 @@ public class RedditFragment extends Fragment {
 public class GetRedditArticles extends AsyncTask<String, String, String>
 {
 
-    private String redditURL = "http://reddit.com/r/libertarian+democrat+liberal+conservative+republican.json";
+    private String redditURL = "http://reddit.com/r/libertarian+democrat+liberal+conservative+republican+politics.json";
 
 
     private String redditJSONString;
