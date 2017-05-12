@@ -85,7 +85,7 @@ public class WireFragment extends Fragment {
             {
                 breitBartJsonString = Jsoup.connect(breitbartArticleURL).ignoreContentType(true).execute().body();
                 huffingtonPostJsonString = Jsoup.connect(huffingtonPostArticleURL).ignoreContentType(true).execute().body();
-
+                buzfeedJsonString = Jsoup.connect(buzfeedArticleURL).ignoreContentType(true).execute().body();
             }
             catch (IOException e)
             {
@@ -112,6 +112,10 @@ public class WireFragment extends Fragment {
                 JSONArray buzfeedJSONArray = buzzfeedJSONObject.getJSONArray("articles");
                 JSONArray huffpostJSONArray = huffpostJSONObject.getJSONArray("articles");
 
+
+                int breitbartIndex = breitbartJSONArray.length();
+                int buzfeedIndex = buzfeedJSONArray.length();
+                int huffpostIndex = huffpostJSONArray.length();
 
 
 
