@@ -46,15 +46,12 @@ public class NewsFragment extends Fragment {
 
 
     private GetNewsArticles getNewsArticles;
-    private ListView listView;
-    private Activity activity;
+
 
 
     CustomList listAdapter;
 
-    private ArrayList titles;
-    private ArrayList urls;
-    private Bitmap[] images;
+
     public NewsFragment() {
         // Required empty public constructor
     }
@@ -73,7 +70,6 @@ public class NewsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-        this.activity = getActivity();
         this.getNewsArticles = new GetNewsArticles(getContext());
         this.getNewsArticles.execute();
 
@@ -85,10 +81,6 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
-        Log.v("news onCreateView", "the shit ran ");
-
-
         return inflater.inflate(R.layout.fragment_news, container, false);
 
 
@@ -99,9 +91,6 @@ public class NewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-                titles = getNewsArticles.getTitle();
-                urls = getNewsArticles.getUrl();
-                images = getNewsArticles.getThumbnails();
 
                 Log.v("news onViewCreated", "the shit ran ");
 
@@ -110,14 +99,6 @@ public class NewsFragment extends Fragment {
 
 
 
-    public class GetNewsThumbnails extends AsyncTask<Bitmap, Bitmap, Bitmap>
-    {
-
-        @Override
-        protected Bitmap doInBackground(Bitmap... params) {
-            return null;
-        }
-    }
 
     public class GetNewsArticles extends AsyncTask<String, String, String> {
 
@@ -243,12 +224,6 @@ public class NewsFragment extends Fragment {
             //------------------------------------------------------------------------------------------
             try
             {
-
-
-
-
-
-
                 JSONArray apArticleJsonArray = this.apJsonObject.getJSONArray("articles");
                 JSONArray bloombergJsonArray = this.bloombergJsonObject.getJSONArray("articles");
 //                JSONArray ftJsonArray = this.financialtimesJsonObject.getJSONArray("articles");

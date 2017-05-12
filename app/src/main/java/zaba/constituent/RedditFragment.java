@@ -24,8 +24,7 @@ import java.util.ArrayList;
 public class RedditFragment extends Fragment {
 
     private RedditFragment.GetRedditArticles getRedditArticles;
-    private ListView listView;
-    private Activity activity;
+
 
     public RedditFragment() {
         // Required empty public constructor
@@ -42,7 +41,7 @@ public class RedditFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.activity = getActivity();
+
         this.getRedditArticles = new RedditFragment.GetRedditArticles(getContext());
         this.getRedditArticles.execute();
 
@@ -61,22 +60,14 @@ public class RedditFragment extends Fragment {
 public class GetRedditArticles extends AsyncTask<String, String, String>
 {
 
-    private String redditURL = "http://reddit.com/r/libertarian+democrat+liberal+conservative+republican+politics.json";
-
-
+    private String redditURL = "http://reddit.com/r/libertarian+democrat+liberal+conservative+republican.json";
     private String redditJSONString;
-
-
     private JSONObject redditObject;
-
-
-
-
     private JSONArray articlesArray;
 
     private ArrayList newsArticlesArrayList;
 
-    private RedditCustomList listAdapter;
+    RedditCustomList listAdapter;
 
     private ListView listView;
 
@@ -92,7 +83,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
     {
         pdia = new ProgressDialog(context);
         pdia.setMessage("Loading Articles...");
-       // pdia.show();
+        pdia.show();
 
     }
 
@@ -119,8 +110,6 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
 
 
         int articlesIndex = articlesArray.length();
-        String[] title = new String[articlesIndex];
-        String[] imageURL = new String[articlesIndex];
 
         RedditFragment.NewsArticle[] newsArticles = new NewsArticle[articlesIndex];
 
@@ -172,8 +161,9 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
     }
     protected void onPostExecute(String string)
     {
-        listAdapter = new
-                RedditCustomList(getContext(), newsArticlesArrayList);
+            listAdapter = new
+                    RedditCustomList(getContext(), newsArticlesArrayList);
+
         listView=(ListView) getView().findViewById(R.id.redditListView);
 
         listView.setAdapter(listAdapter);
@@ -184,7 +174,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
 
 }
 
-    public class NewsArticle implements Comparable<RedditFragment.NewsArticle>
+    public class NewsArticle implements Comparable<NewsArticle>
     {
         private String title;
         private String url;
@@ -192,7 +182,6 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
         private String description;
         private String datePublished;
         private String source;
-        private String subreddit;
         private String upvotes;
 
 
@@ -216,14 +205,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
             this.imageURL = imageUrlArg;
         }
 
-        public void setDescription(String descriptionArg)
-        {
-            this.description = descriptionArg;
-        }
-        public void setDatePublished(String datePublishedArg)
-        {
-            this.datePublished = datePublishedArg;
-        }
+
         public void setSource(String sourceArg)
         {
             this.source = sourceArg;
@@ -247,10 +229,6 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
         {
             return imageURL;
         }
-        public String getDescription()
-        {
-            return description;
-        }
         public String getDatePublished()
         {
             return datePublished;
@@ -266,7 +244,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
         }
 
         @Override
-        public int compareTo(RedditFragment.NewsArticle two) {
+        public int compareTo(NewsArticle two) {
             return getDatePublished().compareTo(two.getDatePublished());
         }
 

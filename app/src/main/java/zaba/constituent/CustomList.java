@@ -2,6 +2,8 @@ package zaba.constituent;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.Image;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,73 +37,87 @@ public class CustomList extends ArrayAdapter<String> {
 
     @NonNull
     public View getView(int position, View rowView, ViewGroup parent) {
+
         LayoutInflater inflater = context.getLayoutInflater();
-        rowView = inflater.inflate(R.layout.list_single, null, true);
-
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.text);
-
-        txtTitle.setText(newsArticles.get(position).getTitle());
-
-        TextView biasText = (TextView) rowView.findViewById(R.id.biasTextView);
 
 
-        TextView sourceText = (TextView) rowView.findViewById(R.id.newsSourceTextView);
-        sourceText.setText(newsArticles.get(position).getSource());
+        ViewHolder holder;
+
+        if (rowView == null)
+        {
+            rowView = inflater.inflate(R.layout.list_single, null, true);
+
+            holder = new ViewHolder();
+            holder.titleText = (TextView) rowView.findViewById(R.id.text);
+            holder.biasText = (TextView) rowView.findViewById(R.id.biasTextView);
+            holder.sourceText = (TextView) rowView.findViewById(R.id.newsSourceTextView);
+            holder.sourceImage =(ImageView) rowView.findViewById(R.id.newsSourceImageView);
+            holder.thumbnail = (ImageView) rowView.findViewById(R.id.newsThumbnail);
+            rowView.setTag(holder);
+        }
+
+        else {
+            holder = (ViewHolder) rowView.getTag();
+        }
+
+        holder.titleText.setText(newsArticles.get(position).getTitle());
+
+
+
+        holder.sourceText.setText(newsArticles.get(position).getSource());
 
 
         TextView descriptionText = (TextView) rowView.findViewById(R.id.textView2);
 
 
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.newsThumbnail);
 
-        ImageView sourceLogo = (ImageView) rowView.findViewById(R.id.newsSourceImageView);
 
 
 
         String source = newsArticles.get(position).getSource();
         switch (source){
             case "Associated Press":
-                biasText.setText(" | minimal bias");
-                sourceLogo.setImageResource(R.drawable.ap_logo);
+                holder.biasText.setText(" | minimal bias");
+                holder.sourceImage.setImageResource(R.drawable.ap_logo);
                 break;
 
             case "Bloomberg":
-                biasText.setText(" | minimal bias");
-                sourceLogo.setImageResource(R.drawable.bloomberg_logo);
+                holder.biasText.setText(" | minimal bias");
+                holder.sourceImage.setImageResource(R.drawable.bloomberg_logo);
                 break;
 
             case "Financial Times":
-                biasText.setText(" | conservative bias");
-                sourceLogo.setImageResource(R.drawable.ft_logo);
+                holder.biasText.setText(" | conservative bias");
+                holder.sourceImage.setImageResource(R.drawable.ft_logo);
                 break;
 
             case "Reuters":
-                biasText.setText(" | minimal bias");
-                sourceLogo.setImageResource(R.drawable.reuterslogo);
+                holder.biasText.setText(" | minimal bias");
+                holder.sourceImage.setImageResource(R.drawable.reuterslogo);
                 break;
 
             case "Wall Street Journal":
-                biasText.setText(" | conservative bias");
-                sourceLogo.setImageResource(R.drawable.wsj_logo);
+                holder.biasText.setText(" | conservative bias");
+                holder.sourceImage.setImageResource(R.drawable.wsj_logo);
                 break;
 
             case "New York Times":
-                biasText.setText(" | liberal bias");
-                sourceLogo.setImageResource(R.drawable.nyt_logo);
+                holder.biasText.setText(" | liberal bias");
+                holder.sourceImage.setImageResource(R.drawable.nyt_logo);
                 break;
 
             case "Washington Post":
-                biasText.setText(" | slight liberal bias");
-                sourceLogo.setImageResource(R.drawable.wapo_logo);
+                holder.biasText.setText(" | slight liberal bias");
+                holder.sourceImage.setImageResource(R.drawable.wapo_logo);
                 break;
 
 
         }
 
-            descriptionText.setText((String) newsArticles.get(position).getDescription());
+        descriptionText.setText((String) newsArticles.get(position).getDescription());
 
 
-            Picasso.with(getContext()).load((String) newsArticles.get(position).getImageURL()).into(imageView);
+        Picasso.with(getContext()).load((String) newsArticles.get(position).getImageURL()).into(holder.thumbnail);
 
 
 
@@ -112,6 +128,14 @@ public class CustomList extends ArrayAdapter<String> {
         return rowView;
 
 
+    }
+    static class ViewHolder
+    {
+        TextView biasText;
+        TextView sourceText;
+        TextView titleText;
+        ImageView sourceImage;
+        ImageView thumbnail;
     }
 
 

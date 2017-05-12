@@ -17,17 +17,16 @@
         >
 
         <ImageView
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:minHeight="80dp"
-            android:src="@drawable/capitolsteps"
-            android:layout_gravity="left"
             android:id="@+id/newsThumbnail"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_below="@+id/text"
+            android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView2"
-            android:layout_toEndOf="@+id/textView2" />
+            android:layout_below="@+id/text"
+            android:layout_gravity="left"
+            android:layout_toEndOf="@+id/textView2"
+            android:adjustViewBounds="true"
+            android:minHeight="80dp"
+            android:src="@drawable/capitolsteps" />
 
         <TextView
             android:padding="3dp"

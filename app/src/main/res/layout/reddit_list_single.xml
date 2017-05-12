@@ -42,10 +42,12 @@
 
         <ImageView
             android:id="@+id/redditThumbnail"
-            android:layout_width="82dip"
-            android:layout_height="64dp"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_alignBottom="@+id/text"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/capitolsteps" />
 
 
