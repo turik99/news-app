@@ -152,11 +152,6 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
             newsArticlesArrayList.add(newsArticles[i]);
         }
 
-
-
-
-
-
         return null;
     }
     protected void onPostExecute(String string)
