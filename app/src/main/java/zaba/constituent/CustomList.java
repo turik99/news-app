@@ -26,7 +26,7 @@ public class CustomList extends ArrayAdapter<String> {
         this.context = (Activity) getContext();
         this.newsArticles = newsArticlesArg;
 
-        Log.v("customlist custructor", " this shit went trhough");
+        Log.v("customlist custructor", " the list was created");
     }
     @Override
     public int getCount() {
@@ -109,6 +109,15 @@ public class CustomList extends ArrayAdapter<String> {
                 holder.sourceImage.setImageResource(R.drawable.wapo_logo);
                 break;
 
+            case "Breitbart":
+                holder.biasText.setText("| far right bias");
+                holder.sourceImage.setImageResource(R.drawable.breitbart);
+                break;
+            case "HuffPost":
+                holder.biasText.setText("| far left bias");
+                holder.sourceImage.setImageResource(R.drawable.huffpost);
+                break;
+
 
         }
 
@@ -121,7 +130,7 @@ public class CustomList extends ArrayAdapter<String> {
 
 
 
-        Log.v("custom list", "all this shit ran");
+        Log.v("custom list", "getView ran on time");
 
         return rowView;
 
