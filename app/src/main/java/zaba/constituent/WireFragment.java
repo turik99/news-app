@@ -21,7 +21,8 @@ import java.io.IOException;
 public class WireFragment extends Fragment {
 
 
-    public WireFragment() {
+    public WireFragment()
+    {
     }
 
     // TODO: Rename and change types and number of parameters

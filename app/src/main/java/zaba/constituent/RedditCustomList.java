@@ -21,8 +21,6 @@ import java.util.ArrayList;
 public class RedditCustomList extends ArrayAdapter<String> {
 
     private Activity context;
-
-
     private ArrayList<RedditFragment.NewsArticle> newsArticles;
 
     public RedditCustomList(Context context, ArrayList newsArticlesArg){
