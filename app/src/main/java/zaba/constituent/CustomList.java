@@ -2,8 +2,6 @@ package zaba.constituent;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +19,7 @@ public class CustomList extends ArrayAdapter<String> {
 
     private Activity context;
 
-    private ArrayList<NewsFragment.NewsArticle> newsArticles;
+    private ArrayList<NewsArticle> newsArticles;
 
     public CustomList(Context context, ArrayList newsArticlesArg) {
         super(context, R.layout.list_single);
