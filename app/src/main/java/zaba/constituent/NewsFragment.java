@@ -1,8 +1,11 @@
 package zaba.constituent;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -26,7 +30,6 @@ public class NewsFragment extends Fragment {
     private GetNewsArticles getNewsArticles;
 
     CustomList listAdapter;
-
 
     public NewsFragment() {
         // Required empty public constructor
@@ -135,7 +138,7 @@ public class NewsFragment extends Fragment {
 
 
 
-        private ArrayList newsArticlesArrayList;
+        private ArrayList<NewsArticle> newsArticlesArrayList;
 
         public GetNewsArticles(Context contextArg){
             this.context = contextArg;
@@ -162,8 +165,6 @@ public class NewsFragment extends Fragment {
                 wallStreetJournalJsonString = Jsoup.connect(wallStreetJournalArticleURL).ignoreContentType(true).execute().body();
                 newYorkTimesJsonString = Jsoup.connect(newYorkTimesArticleURl).ignoreContentType(true).execute().body();
                 washingtonPostJsonString = Jsoup.connect(washingtonPostArticleURL).ignoreContentType(true).execute().body();
-
-
 
             }
             catch (IOException e)
@@ -353,6 +354,26 @@ public class NewsFragment extends Fragment {
 
             listView.setAdapter(listAdapter);
 
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
+                @Override
+                public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                        long arg3)
+                {
+
+                    String URL = newsArticlesArrayList.get(position).getUrl();
+                    try {
+                        Uri uri = Uri.parse("googlechrome://navigate?url=" + URL);
+                        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        // Chrome is probably not installed
+                    }
+
+                }
+            });
+
             pdia.dismiss();
 
         }
@@ -376,26 +397,6 @@ public class NewsFragment extends Fragment {
         }
 
 
-
-
-
-
     }
 
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-

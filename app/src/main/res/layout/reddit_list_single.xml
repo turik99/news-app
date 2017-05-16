@@ -4,10 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:adjustViewBounds="true"
-
-
-
-    android:id="@+id/list_single1">
+    android:id="@+id/list_singleTableLayout">
 
     <RelativeLayout
 
@@ -30,7 +27,6 @@
 
         <TextView
             android:padding="5dp"
-
             android:id="@+id/subredditTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,11 +41,9 @@
             android:id="@+id/redditThumbnail"
             android:layout_width="64dp"
             android:layout_height="48dp"
-            android:layout_alignBottom="@+id/text"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/capitolsteps" />
+            app:srcCompat="@drawable/capitolsteps"
+            android:layout_alignParentEnd="true" />
 
 
     </RelativeLayout>

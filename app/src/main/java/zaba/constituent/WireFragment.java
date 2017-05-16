@@ -1,13 +1,17 @@
 package zaba.constituent;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -17,6 +21,7 @@ import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class WireFragment extends Fragment {
@@ -218,6 +223,9 @@ public class WireFragment extends Fragment {
 
                 }
 
+                Collections.sort(newsArticlesArrayList);
+
+
             }
             catch (JSONException e)
             {
@@ -237,6 +245,23 @@ public class WireFragment extends Fragment {
                 listView=(ListView) getView().findViewById(R.id.fakeNewsListView);
 
                 listView.setAdapter(listAdapter);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        try
+                        {
+                            Uri uri = Uri.parse("googlechrome://navigate?url=" + newsArticlesArrayList.get(i).getUrl());
+                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        } catch (ActivityNotFoundException e)
+                        {
+                            // Chrome is probably not installed
+                        }
+                    }
+                });
+
 
                 pdia.dismiss();
 

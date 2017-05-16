@@ -52,14 +52,14 @@
 
         <ImageView
             android:id="@+id/newsSourceImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
             android:adjustViewBounds="true"
             android:maxHeight="50dp"
             android:padding="4dp"
-            app:srcCompat="@drawable/bloomberg_logo"
-            android:layout_below="@+id/textView2" />
+            app:srcCompat="@drawable/bloomberg_logo" />
 
         <TextView
             android:id="@+id/newsSourceTextView"
@@ -67,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/newsSourceImageView"
             android:layout_toEndOf="@+id/newsSourceImageView"
-            android:paddingTop="4dp"
-            android:text="News Source | "
+            android:padding="4dp"
+            android:text="News Source |"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
         <TextView
@@ -78,7 +78,7 @@
             android:layout_alignBaseline="@+id/newsSourceTextView"
             android:layout_alignBottom="@+id/newsSourceTextView"
             android:layout_toEndOf="@+id/newsSourceTextView"
-            android:paddingTop="4dp"
+            android:padding="4dp"
             android:text="amount of bias"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 

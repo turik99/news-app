@@ -30,12 +30,14 @@ public class RedditCustomList extends ArrayAdapter<String> {
 
     }
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return newsArticles.size();
     }
 
     @NonNull
-    public View getView(int position, View rowView, ViewGroup parent) {
+    public View getView(int position, View rowView, ViewGroup parent)
+    {
 
         LayoutInflater inflater = context.getLayoutInflater();
 

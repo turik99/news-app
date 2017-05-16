@@ -18,10 +18,10 @@ import java.util.ArrayList;
 public class CustomList extends ArrayAdapter<String> {
 
     private Activity context;
-
     private ArrayList<NewsArticle> newsArticles;
 
-    public CustomList(Context context, ArrayList newsArticlesArg) {
+    public CustomList(Context context, ArrayList newsArticlesArg)
+    {
         super(context, R.layout.list_single);
         this.context = (Activity) getContext();
         this.newsArticles = newsArticlesArg;
@@ -34,7 +34,8 @@ public class CustomList extends ArrayAdapter<String> {
     }
 
     @NonNull
-    public View getView(int position, View rowView, ViewGroup parent) {
+    public View getView(int position, View rowView, ViewGroup parent)
+    {
 
         LayoutInflater inflater = context.getLayoutInflater();
 
@@ -51,25 +52,17 @@ public class CustomList extends ArrayAdapter<String> {
             holder.sourceText = (TextView) rowView.findViewById(R.id.newsSourceTextView);
             holder.sourceImage =(ImageView) rowView.findViewById(R.id.newsSourceImageView);
             holder.thumbnail = (ImageView) rowView.findViewById(R.id.newsThumbnail);
+            holder.description = (TextView) rowView.findViewById(R.id.textView2);
+
             rowView.setTag(holder);
         }
-
-        else {
+        else
+        {
             holder = (ViewHolder) rowView.getTag();
         }
 
         holder.titleText.setText(newsArticles.get(position).getTitle());
-
-
-
         holder.sourceText.setText(newsArticles.get(position).getSource());
-
-
-        TextView descriptionText = (TextView) rowView.findViewById(R.id.textView2);
-
-
-
-
 
 
         String source = newsArticles.get(position).getSource();
@@ -95,7 +88,7 @@ public class CustomList extends ArrayAdapter<String> {
                 break;
 
             case "Wall Street Journal":
-                holder.biasText.setText(" | conservative bias");
+                holder.biasText.setText(" | slight conservative bias");
                 holder.sourceImage.setImageResource(R.drawable.wsj_logo);
                 break;
 
@@ -105,30 +98,34 @@ public class CustomList extends ArrayAdapter<String> {
                 break;
 
             case "Washington Post":
-                holder.biasText.setText(" | slight liberal bias");
+                holder.biasText.setText(" | liberal bias");
                 holder.sourceImage.setImageResource(R.drawable.wapo_logo);
                 break;
 
             case "Breitbart":
-                holder.biasText.setText("| far right bias");
+                holder.biasText.setText(" | far right bias");
                 holder.sourceImage.setImageResource(R.drawable.breitbart);
                 break;
             case "HuffPost":
-                holder.biasText.setText("| far left bias");
+                holder.biasText.setText(" | far left bias");
                 holder.sourceImage.setImageResource(R.drawable.huffpost);
                 break;
 
 
         }
 
-        descriptionText.setText((String) newsArticles.get(position).getDescription());
 
+        if (newsArticles.get(position).getDescription() != "null")
+        {
+            holder.description.setText((String) newsArticles.get(position).getDescription());
+
+        }
+
+        else {
+            holder.description.setText(" ");
+        }
 
         Picasso.with(getContext()).load((String) newsArticles.get(position).getImageURL()).into(holder.thumbnail);
-
-
-
-
 
         Log.v("custom list", "getView ran on time");
 
@@ -143,6 +140,7 @@ public class CustomList extends ArrayAdapter<String> {
         TextView titleText;
         ImageView sourceImage;
         ImageView thumbnail;
+        TextView description;
     }
 
 
