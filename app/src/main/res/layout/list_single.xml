@@ -26,6 +26,7 @@
             android:layout_toEndOf="@+id/textView2"
             android:adjustViewBounds="true"
             android:minHeight="80dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/capitolsteps" />
 
         <TextView
@@ -52,8 +53,8 @@
 
         <ImageView
             android:id="@+id/newsSourceImageView"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView2"
             android:adjustViewBounds="true"

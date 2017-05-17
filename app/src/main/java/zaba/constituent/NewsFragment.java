@@ -316,7 +316,7 @@ public class NewsFragment extends Fragment {
 
 
 
-                newsArticlesArrayList = new ArrayList<NewsArticle>(100);
+                newsArticlesArrayList = new ArrayList<NewsArticle>(newsArticles.length());
 
 
 
@@ -328,7 +328,7 @@ public class NewsFragment extends Fragment {
 
                 }
                 Collections.sort(newsArticlesArrayList);
-
+                Collections.reverse(newsArticlesArrayList);
                 Log.v("tag", this.title.get(apArticleIndex));
                 Log.v("tag", this.url.get(apArticleIndex));
 

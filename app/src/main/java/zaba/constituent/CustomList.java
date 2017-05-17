@@ -68,64 +68,97 @@ public class CustomList extends ArrayAdapter<String> {
         String source = newsArticles.get(position).getSource();
         switch (source){
             case "Associated Press":
-                holder.biasText.setText(" | minimal bias");
+                holder.biasText.setText("| minimal bias");
                 holder.sourceImage.setImageResource(R.drawable.ap_logo);
                 break;
 
             case "Bloomberg":
-                holder.biasText.setText(" | minimal bias");
+                holder.biasText.setText("| minimal bias");
                 holder.sourceImage.setImageResource(R.drawable.bloomberg_logo);
                 break;
 
             case "Financial Times":
-                holder.biasText.setText(" | conservative bias");
+                holder.biasText.setText("| conservative bias");
                 holder.sourceImage.setImageResource(R.drawable.ft_logo);
                 break;
 
             case "Reuters":
-                holder.biasText.setText(" | minimal bias");
+                holder.biasText.setText("| minimal bias");
                 holder.sourceImage.setImageResource(R.drawable.reuterslogo);
                 break;
 
             case "Wall Street Journal":
-                holder.biasText.setText(" | slight conservative bias");
+                holder.biasText.setText("| slight conservative bias");
                 holder.sourceImage.setImageResource(R.drawable.wsj_logo);
                 break;
 
             case "New York Times":
-                holder.biasText.setText(" | liberal bias");
+                holder.biasText.setText("| liberal bias");
                 holder.sourceImage.setImageResource(R.drawable.nyt_logo);
                 break;
 
             case "Washington Post":
-                holder.biasText.setText(" | liberal bias");
+                holder.biasText.setText("| liberal bias");
                 holder.sourceImage.setImageResource(R.drawable.wapo_logo);
                 break;
 
             case "Breitbart":
-                holder.biasText.setText(" | far right bias");
+                holder.biasText.setText("| far right bias");
                 holder.sourceImage.setImageResource(R.drawable.breitbart);
                 break;
             case "HuffPost":
-                holder.biasText.setText(" | far left bias");
+                holder.biasText.setText("| far left bias");
                 holder.sourceImage.setImageResource(R.drawable.huffpost);
                 break;
 
 
         }
 
+        String description = newsArticles.get(position).getDescription();
 
-        if (newsArticles.get(position).getDescription() != "null")
+
+        if (description != "null")
         {
-            holder.description.setText((String) newsArticles.get(position).getDescription());
+            if (description.length() >= 220)
+            {
+                holder.description.setText(description.substring(0, 220)+"...");
 
+                if (!newsArticles.get(position).getImageURL().isEmpty())
+                {
+                    Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(holder.thumbnail);
+
+                }
+
+            }
+
+            else
+            {
+                if (description.length()<80)
+                {
+                    holder.description.setText(description);
+                    holder.thumbnail.setImageResource(R.drawable.noimage);
+                }
+                else {
+                    holder.description.setText(description);
+
+                    if (!newsArticles.get(position).getImageURL().isEmpty())
+                    {
+                        Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(holder.thumbnail);
+
+                    }
+                }
+
+
+
+            }
         }
+
 
         else {
             holder.description.setText(" ");
         }
 
-        Picasso.with(getContext()).load((String) newsArticles.get(position).getImageURL()).into(holder.thumbnail);
+
 
         Log.v("custom list", "getView ran on time");
 
