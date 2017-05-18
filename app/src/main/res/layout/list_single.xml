@@ -18,9 +18,8 @@
 
         <ImageView
             android:id="@+id/newsThumbnail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView2"
+            android:layout_width="200dp"
+            android:layout_height="125dp"
             android:layout_below="@+id/text"
             android:layout_gravity="left"
             android:layout_toEndOf="@+id/textView2"
@@ -49,7 +48,8 @@
             android:layout_height="wrap_content"
             android:text="A description tends to be a little bit longer. they can be about this long when un edited, and require some space they can drone on for some time...."
             android:layout_below="@+id/text"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/newsThumbnail" />
 
         <ImageView
             android:id="@+id/newsSourceImageView"

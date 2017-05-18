@@ -84,6 +84,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
         pdia = new ProgressDialog(context);
         pdia.setMessage("Loading Articles...");
         pdia.show();
+        pdia.setCanceledOnTouchOutside(false);
 
     }
 
@@ -149,7 +150,6 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
                 {
 
                 }
-
             }
 
             newsArticlesArrayList = new ArrayList<NewsArticle>();
@@ -196,8 +196,10 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
             });
         }
 
-        else {
+        else
+        {
             LinearLayout linearLayout = new LinearLayout(getContext());
+
         }
 
 

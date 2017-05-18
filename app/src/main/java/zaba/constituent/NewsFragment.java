@@ -149,6 +149,8 @@ public class NewsFragment extends Fragment {
             pdia = new ProgressDialog(context);
             pdia.setMessage("Loading Articles...");
             pdia.show();
+            pdia.setCanceledOnTouchOutside(false);
+
 
         }
 

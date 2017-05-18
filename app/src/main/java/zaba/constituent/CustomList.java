@@ -2,6 +2,7 @@ package zaba.constituent;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,12 +14,16 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CustomList extends ArrayAdapter<String> {
 
     private Activity context;
     private ArrayList<NewsArticle> newsArticles;
+
+    private int tall;
+    private int wide;
 
     public CustomList(Context context, ArrayList newsArticlesArg)
     {
@@ -36,6 +41,9 @@ public class CustomList extends ArrayAdapter<String> {
     @NonNull
     public View getView(int position, View rowView, ViewGroup parent)
     {
+
+        Bitmap compressedBitmap;
+
 
         LayoutInflater inflater = context.getLayoutInflater();
 
@@ -93,7 +101,7 @@ public class CustomList extends ArrayAdapter<String> {
                 break;
 
             case "New York Times":
-                holder.biasText.setText("| liberal bias");
+                holder.biasText.setText("| slight liberal bias");
                 holder.sourceImage.setImageResource(R.drawable.nyt_logo);
                 break;
 
@@ -119,13 +127,16 @@ public class CustomList extends ArrayAdapter<String> {
 
         if (description != "null")
         {
-            if (description.length() >= 220)
+            if (description.length() >= 300)
             {
-                holder.description.setText(description.substring(0, 220)+"...");
+                holder.description.setText(description.substring(0, 300)+"...");
 
                 if (!newsArticles.get(position).getImageURL().isEmpty())
                 {
-                    Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(holder.thumbnail);
+                    Picasso.with(context).load(newsArticles.get(position).getImageURL())
+                            .fit()
+                            .centerCrop()
+                            .into(holder.thumbnail);
 
                 }
 
@@ -133,17 +144,25 @@ public class CustomList extends ArrayAdapter<String> {
 
             else
             {
-                if (description.length()<80)
+
+                if (description.length()<65)
                 {
                     holder.description.setText(description);
                     holder.thumbnail.setImageResource(R.drawable.noimage);
-                }
-                else {
+                                 }
+
+
+                else
+                {
                     holder.description.setText(description);
 
                     if (!newsArticles.get(position).getImageURL().isEmpty())
                     {
-                        Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(holder.thumbnail);
+
+                        Picasso.with(context).load(newsArticles.get(position).getImageURL())
+                                .fit()
+                                .centerCrop()
+                                .into(holder.thumbnail);
 
                     }
                 }
