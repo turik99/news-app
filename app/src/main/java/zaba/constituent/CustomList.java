@@ -149,7 +149,10 @@ public class CustomList extends ArrayAdapter<String> {
                 {
                     holder.description.setText(description);
                     holder.thumbnail.setImageResource(R.drawable.noimage);
-                                 }
+                    holder.thumbnail.getLayoutParams().width = 0;
+                    holder.thumbnail.getLayoutParams().height = 0;
+
+                }
 
 
                 else

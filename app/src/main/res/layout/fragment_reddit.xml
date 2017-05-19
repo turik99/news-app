@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
     tools:context="zaba.constituent.RedditFragment">
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,9 +13,24 @@
         android:orientation="vertical">
 
         <ListView
+
             android:id="@+id/redditListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="100dp"
+            android:layout_above="@+id/adView"
+            android:layout_alignParentTop="true" />
+
+
+        <com.google.android.gms.ads.AdView
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-4430034146252858/4393855728"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+        </com.google.android.gms.ads.AdView>
 
     </RelativeLayout>
 </FrameLayout>

@@ -46,6 +46,7 @@ public class RedditFragment extends Fragment {
         this.getRedditArticles = new RedditFragment.GetRedditArticles(getContext());
         this.getRedditArticles.execute();
 
+
     }
 
 

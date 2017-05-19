@@ -1,5 +1,6 @@
 package zaba.constituent;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,4 +34,29 @@ public class TwitterFragment extends Fragment {
     }
 
 
+
+    public class GetTwitterFeed extends AsyncTask<String, String, String>
+    {
+
+        protected void onPreExecute()
+        {
+
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            return null;
+
+        }
+
+        protected void onPostExecute(String string)
+        {
+
+        }
+
+    }
+
+
 }
+
+
+
