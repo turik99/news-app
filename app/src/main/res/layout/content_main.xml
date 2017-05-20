@@ -15,15 +15,13 @@
         android:layout_height="match_parent" >
 
 
-
+        <TextView
+            android:id="@+id/pickapane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Pick a pane to start" />
     </FrameLayout>
-
-    <TextView
-        android:id="@+id/pickapane"
-        android:padding="10dp"
-        android:text="Pick a pane to start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>
