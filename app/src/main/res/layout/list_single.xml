@@ -17,16 +17,17 @@
         >
 
         <ImageView
+            android:padding="5dp"
             android:id="@+id/newsThumbnail"
             android:layout_width="200dp"
             android:layout_height="125dp"
-            android:layout_below="@+id/text"
             android:layout_gravity="left"
-            android:layout_toEndOf="@+id/textView2"
             android:adjustViewBounds="true"
             android:minHeight="80dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/capitolsteps" />
+            android:src="@drawable/capitolsteps"
+            android:layout_below="@+id/text"
+            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:padding="3dp"
@@ -37,7 +38,7 @@
             android:text="This is an example title that might be used. most tiles are this long, about"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:padding="3dp"
@@ -49,7 +50,8 @@
             android:text="A description tends to be a little bit longer. they can be about this long when un edited, and require some space they can drone on for some time...."
             android:layout_below="@+id/text"
             android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/newsThumbnail" />
+            android:layout_alignBottom="@+id/newsThumbnail"
+            android:layout_toStartOf="@+id/newsThumbnail"/>
 
         <ImageView
             android:id="@+id/newsSourceImageView"

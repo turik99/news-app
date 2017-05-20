@@ -42,9 +42,6 @@ public class CustomList extends ArrayAdapter<String> {
     public View getView(int position, View rowView, ViewGroup parent)
     {
 
-        Bitmap compressedBitmap;
-
-
         LayoutInflater inflater = context.getLayoutInflater();
 
 
@@ -125,8 +122,7 @@ public class CustomList extends ArrayAdapter<String> {
         String description = newsArticles.get(position).getDescription();
 
 
-        if (description != "null")
-        {
+
             if (description.length() >= 300)
             {
                 holder.description.setText(description.substring(0, 300)+"...");
@@ -145,44 +141,40 @@ public class CustomList extends ArrayAdapter<String> {
             else
             {
 
-                if (description.length()<65)
-                {
-                    holder.description.setText(description);
-                    holder.thumbnail.setImageResource(R.drawable.noimage);
-                    holder.thumbnail.getLayoutParams().width = 0;
-                    holder.thumbnail.getLayoutParams().height = 0;
+                holder.description.setText(description);
 
-                }
+                if (!newsArticles.get(position).getImageURL().isEmpty()) {
 
-
-                else
-                {
-                    holder.description.setText(description);
-
-                    if (!newsArticles.get(position).getImageURL().isEmpty())
+                    try
                     {
-
                         Picasso.with(context).load(newsArticles.get(position).getImageURL())
                                 .fit()
                                 .centerCrop()
                                 .into(holder.thumbnail);
 
                     }
+                    catch (Exception e)
+                    {
+
+                    }
+
                 }
 
 
-
             }
-        }
 
 
-        else {
-            holder.description.setText(" ");
-        }
+
+
+
+
+
+
 
 
 
         Log.v("custom list", "getView ran on time");
+
 
         return rowView;
 
