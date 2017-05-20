@@ -58,9 +58,6 @@ public class RedditFragment extends Fragment {
     }
 
 
-
-
-
 public class GetRedditArticles extends AsyncTask<String, String, String>
 {
 

@@ -17,13 +17,12 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CustomList extends ArrayAdapter<String> {
+public class CustomList extends ArrayAdapter<String>
+{
 
     private Activity context;
     private ArrayList<NewsArticle> newsArticles;
 
-    private int tall;
-    private int wide;
 
     public CustomList(Context context, ArrayList newsArticlesArg)
     {
@@ -34,7 +33,8 @@ public class CustomList extends ArrayAdapter<String> {
         Log.v("customlist custructor", " the list was created");
     }
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return newsArticles.size();
     }
 
@@ -162,17 +162,6 @@ public class CustomList extends ArrayAdapter<String> {
 
 
             }
-
-
-
-
-
-
-
-
-
-
-
         Log.v("custom list", "getView ran on time");
 
 

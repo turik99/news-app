@@ -49,7 +49,6 @@ public class NewsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         try {
             this.getNewsArticles = new GetNewsArticles(getContext());
             this.getNewsArticles.execute();
@@ -62,6 +61,7 @@ public class NewsFragment extends Fragment {
         }
 
 
+
     }
 
     @Override
@@ -70,6 +70,8 @@ public class NewsFragment extends Fragment {
         // Inflate the layout for this fragment
 
         return inflater.inflate(R.layout.fragment_news, container, false);
+
+
 
 
     }
