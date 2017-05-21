@@ -64,12 +64,17 @@ public class WireFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_wire, container, false);
 
 
+
+        return view;
+    }
+
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
         AdView adView = (AdView) view.findViewById(R.id.wireAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
 
         adView.loadAd(adRequest);
 
-        return view;
     }
 
 

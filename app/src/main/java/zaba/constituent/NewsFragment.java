@@ -17,6 +17,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -69,7 +72,10 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        View view =  inflater.inflate(R.layout.fragment_news, container, false);
+
+
+        return view;
 
 
 
@@ -79,6 +85,11 @@ public class NewsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        AdView adView = (AdView) view.findViewById(R.id.adViewNews);
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        adView.loadAd(adRequest);
 
         Log.v("news onViewCreated", "the shit ran ");
 

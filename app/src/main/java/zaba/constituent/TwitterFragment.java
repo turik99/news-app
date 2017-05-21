@@ -38,12 +38,16 @@ public class TwitterFragment extends Fragment {
     public class GetTwitterFeed extends AsyncTask<String, String, String>
     {
 
+
         protected void onPreExecute()
         {
 
         }
         @Override
         protected String doInBackground(String... params) {
+
+
+
             return null;
 
         }

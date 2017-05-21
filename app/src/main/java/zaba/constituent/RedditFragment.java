@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,6 +51,7 @@ public class RedditFragment extends Fragment {
         this.getRedditArticles.execute();
 
 
+
     }
 
 
@@ -54,8 +59,29 @@ public class RedditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reddit, container, false);
+        View view =  inflater.inflate(R.layout.fragment_reddit, container, false);
+
+        return view;
+
+
+
     }
+
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
+
+
+
+
+
+        AdView adView = (AdView) view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        adView.loadAd(adRequest);
+
+    }
+
+
 
 
 public class GetRedditArticles extends AsyncTask<String, String, String>
