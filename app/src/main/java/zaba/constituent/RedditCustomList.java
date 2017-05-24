@@ -67,28 +67,27 @@ public class RedditCustomList extends ArrayAdapter<String> {
         holder.titleText.setText(newsArticles.get(position).getTitle());
         holder.subreddit.setText(newsArticles.get(position).getSource());
 
-        holder.subreddit.setTextColor(Color.parseColor("#9c27b0"));
+
 
         switch (holder.subreddit.getText().toString())
         {
-            case "/r/libertarian":
+            case "r/libertarian":
                 holder.subreddit.setTextColor(Color.parseColor("#9c27b0"));
-                break;
-            case "/r/democrat":
+
+            case "r/democrat":
                 holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
-                break;
-            case "/r/liberal":
+
+            case "r/liberal":
                 holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
-                break;
-            case "/r/conservative":
+
+            case "r/conservative":
                 holder.subreddit.setTextColor(Color.parseColor("#f44336"));
-                break;
-            case "/r/republican":
-                holder.subreddit.setTextColor(Color.parseColor("#f44336"));
-                break;
-            case "/r/progressive":
+
+            case "r/republican":
+                holder.subreddit.setTextColor(Color.RED);
+
+            case "r/progressive":
                 holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
-                break;
 
         }
 
