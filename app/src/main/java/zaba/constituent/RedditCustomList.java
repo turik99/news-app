@@ -69,27 +69,26 @@ public class RedditCustomList extends ArrayAdapter<String> {
 
 
 
-        switch (holder.subreddit.getText().toString())
-        {
-            case "r/libertarian":
-                holder.subreddit.setTextColor(Color.parseColor("#9c27b0"));
+        String subreddit = holder.subreddit.getText().toString();
 
-            case "r/democrat":
-                holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
-
-            case "r/liberal":
-                holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
-
-            case "r/conservative":
-                holder.subreddit.setTextColor(Color.parseColor("#f44336"));
-
-            case "r/republican":
-                holder.subreddit.setTextColor(Color.RED);
-
-            case "r/progressive":
-                holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
-
-        }
+        if (subreddit.equals("r/Libertarian") )
+            holder.subreddit.setTextColor(Color.parseColor("#ffc107"));
+        if(subreddit.equals("r/Liberal"))
+            holder.subreddit.setTextColor(Color.BLUE);
+        if (subreddit.equals("r/Conservative") )
+            holder.subreddit.setTextColor(Color.RED);
+        if (subreddit.equals("r/progressive") )
+            holder.subreddit.setTextColor(Color.BLUE);
+        if(subreddit.equals("r/Republican"))
+            holder.subreddit.setTextColor(Color.RED);
+        if(subreddit.equals("r/Democrat"))
+            holder.subreddit.setTextColor(Color.BLUE);
+        if(subreddit.equals("r/esist"))
+            holder.subreddit.setTextColor(Color.BLUE);
+        if(subreddit.equals("r/The_Donald"))
+            holder.subreddit.setTextColor(Color.RED);
+        if(subreddit.equals("r/OurPresident"))
+            holder.subreddit.setTextColor(Color.BLUE);
 
         holder.thumbnail = (ImageView) rowView.findViewById(R.id.redditThumbnail);
         Log.v("custom list", "all this shit ran");

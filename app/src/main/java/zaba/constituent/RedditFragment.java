@@ -87,7 +87,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
 {
 
     private boolean internetWorks;
-    private String redditURL = "http://reddit.com/r/libertarian+democrat+liberal+conservative+republican+esist+progressive.json";
+    private String redditURL = "http://reddit.com/r/libertarian+liberal+conservative+republican+esist+progressive+ourpresident+the_donald.json";
     private String redditJSONString;
     private JSONObject redditObject;
     private JSONArray articlesArray;
