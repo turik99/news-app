@@ -35,9 +35,12 @@ public class NewsFragment extends Fragment {
     private GetNewsArticles getNewsArticles;
 
     CustomList listAdapter;
+    Context context;
 
     public NewsFragment() {
         // Required empty public constructor
+
+
     }
 
 

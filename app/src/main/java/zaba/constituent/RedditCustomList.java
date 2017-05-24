@@ -2,6 +2,7 @@ package zaba.constituent;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,8 @@ public class RedditCustomList extends ArrayAdapter<String> {
             holder  = new ViewHolder();
             holder.titleText = (TextView) rowView.findViewById(R.id.text);
             holder.subreddit = (TextView) rowView.findViewById(R.id.subredditTextView);
+
+
             rowView.setTag(holder);
         }
 
@@ -63,6 +66,31 @@ public class RedditCustomList extends ArrayAdapter<String> {
 
         holder.titleText.setText(newsArticles.get(position).getTitle());
         holder.subreddit.setText(newsArticles.get(position).getSource());
+
+        holder.subreddit.setTextColor(Color.parseColor("#9c27b0"));
+
+        switch (holder.subreddit.getText().toString())
+        {
+            case "/r/libertarian":
+                holder.subreddit.setTextColor(Color.parseColor("#9c27b0"));
+                break;
+            case "/r/democrat":
+                holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
+                break;
+            case "/r/liberal":
+                holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
+                break;
+            case "/r/conservative":
+                holder.subreddit.setTextColor(Color.parseColor("#f44336"));
+                break;
+            case "/r/republican":
+                holder.subreddit.setTextColor(Color.parseColor("#f44336"));
+                break;
+            case "/r/progressive":
+                holder.subreddit.setTextColor(Color.parseColor("#2196f3"));
+                break;
+
+        }
 
         holder.thumbnail = (ImageView) rowView.findViewById(R.id.redditThumbnail);
         Log.v("custom list", "all this shit ran");

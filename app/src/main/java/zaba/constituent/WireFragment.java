@@ -71,9 +71,9 @@ public class WireFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         AdView adView = (AdView) view.findViewById(R.id.wireAdView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest.Builder adRequest = new AdRequest.Builder();
 
-        adView.loadAd(adRequest);
+        adView.loadAd(adRequest.build());
 
     }
 

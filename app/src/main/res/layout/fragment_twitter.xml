@@ -5,9 +5,11 @@
     tools:context="zaba.constituent.TwitterFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ListView
+        android:id="@+id/twitter_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Coming Soon!" />
-
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 </RelativeLayout>

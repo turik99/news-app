@@ -30,7 +30,6 @@ public class RedditFragment extends Fragment {
 
     private RedditFragment.GetRedditArticles getRedditArticles;
 
-
     public RedditFragment() {
         // Required empty public constructor
     }
@@ -88,7 +87,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
 {
 
     private boolean internetWorks;
-    private String redditURL = "http://reddit.com/r/libertarian+democrat+liberal+conservative+republican.json";
+    private String redditURL = "http://reddit.com/r/libertarian+democrat+liberal+conservative+republican+esist+progressive.json";
     private String redditJSONString;
     private JSONObject redditObject;
     private JSONArray articlesArray;
@@ -126,7 +125,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
         }
 
 
-        if (internetWorks == true)
+        if (internetWorks)
         {
             try {
                 redditObject = new JSONObject(redditJSONString);
