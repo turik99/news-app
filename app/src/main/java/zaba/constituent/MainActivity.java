@@ -1,5 +1,10 @@
 package zaba.constituent;
 
+import android.content.Context;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,7 +23,9 @@ public class MainActivity extends AppCompatActivity
         {
 
     private TextView textView;
-    @Override
+            private LocationManager locationManager;
+            private LocationProvider provider;
+            @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -36,6 +43,22 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+//
+//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//
+//        Criteria criteria = new Criteria();
+//       // provider = locationManager.getBestProvider(criteria, false);
+//      //  Location location = locationManager.getLastKnownLocation(provider);
+//
+//
+//        if (location != null) {
+//            System.out.println("Provider " + provider + " has been selected.");
+//            onLocationChanged(location);
+//        } else {
+//            latituteField.setText("Location not available");
+//            longitudeField.setText("Location not available");
+//        }
     }
 
     @Override
@@ -71,15 +94,6 @@ public class MainActivity extends AppCompatActivity
 
             if(item.getItemId() == R.id.nav_wire_services)
                 fragmentClass = WireFragment.class;
-
-
-
-
-
-
-
-
-
 
         try {
             fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance();
