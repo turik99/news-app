@@ -52,6 +52,7 @@ public class RedditCustomList extends ArrayAdapter<String> {
             holder  = new ViewHolder();
             holder.titleText = (TextView) rowView.findViewById(R.id.text);
             holder.subreddit = (TextView) rowView.findViewById(R.id.subredditTextView);
+            holder.biasImage = (ImageView) rowView.findViewById(R.id.biasImageView);
 
 
             rowView.setTag(holder);
@@ -71,28 +72,54 @@ public class RedditCustomList extends ArrayAdapter<String> {
 
         String subreddit = holder.subreddit.getText().toString();
 
-        if (subreddit.equals("r/Libertarian") )
+        if (subreddit.equals("r/Libertarian") ) {
             holder.subreddit.setTextColor(Color.parseColor("#ffc107"));
-        if(subreddit.equals("r/Liberal"))
-            holder.subreddit.setTextColor(Color.BLUE);
-        if (subreddit.equals("r/Conservative") )
-            holder.subreddit.setTextColor(Color.RED);
-        if (subreddit.equals("r/progressive") )
-            holder.subreddit.setTextColor(Color.BLUE);
-        if(subreddit.equals("r/Republican"))
-            holder.subreddit.setTextColor(Color.RED);
-        if(subreddit.equals("r/Democrat"))
-            holder.subreddit.setTextColor(Color.BLUE);
-        if(subreddit.equals("r/esist"))
-            holder.subreddit.setTextColor(Color.BLUE);
-        if(subreddit.equals("r/The_Donald"))
-            holder.subreddit.setTextColor(Color.RED);
-        if(subreddit.equals("r/OurPresident"))
-            holder.subreddit.setTextColor(Color.BLUE);
+            holder.biasImage.setImageResource(R.drawable.liberty_wing);
+        }
 
-        holder.thumbnail = (ImageView) rowView.findViewById(R.id.redditThumbnail);
+        if(subreddit.equals("r/Liberal")) {
+            holder.subreddit.setTextColor(Color.BLUE);
+            holder.biasImage.setImageResource(R.drawable.left_wing);
+        }
+
+        if (subreddit.equals("r/Conservative") ) {
+            holder.subreddit.setTextColor(Color.RED);
+            holder.biasImage.setImageResource(R.drawable.right_wing);
+        }
+
+        if (subreddit.equals("r/progressive") ) {
+            holder.subreddit.setTextColor(Color.BLUE);
+            holder.biasImage.setImageResource(R.drawable.left_wing);
+        }
+
+        if(subreddit.equals("r/Republican")) {
+            holder.subreddit.setTextColor(Color.RED);
+            holder.biasImage.setImageResource(R.drawable.right_wing);
+        }
+
+        if(subreddit.equals("r/Democrat")) {
+            holder.subreddit.setTextColor(Color.BLUE);
+            holder.biasImage.setImageResource(R.drawable.left_wing);
+        }
+        if(subreddit.equals("r/esist")) {
+            holder.subreddit.setTextColor(Color.BLUE);
+            holder.biasImage.setImageResource(R.drawable.left_wing);
+        }
+
+        if(subreddit.equals("r/The_Donald")) {
+            holder.subreddit.setTextColor(Color.RED);
+            holder.biasImage.setImageResource(R.drawable.right_wing);
+        }
+
+        if(subreddit.equals("r/OurPresident")) {
+            holder.subreddit.setTextColor(Color.BLUE);
+            holder.biasImage.setImageResource(R.drawable.left_wing);
+        }
+
         Log.v("custom list", "all this shit ran");
 
+
+        holder.thumbnail = (ImageView) rowView.findViewById(R.id.redditThumbnail);
 
         Picasso.with(getContext()).load(newsArticles.get(position).getImageURL()).into(holder.thumbnail);
         return rowView;
@@ -105,7 +132,7 @@ public class RedditCustomList extends ArrayAdapter<String> {
         TextView titleText;
         TextView subreddit;
         ImageView thumbnail;
-
+        ImageView biasImage;
     }
 
 

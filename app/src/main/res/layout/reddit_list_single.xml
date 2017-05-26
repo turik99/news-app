@@ -45,6 +45,15 @@
             app:srcCompat="@drawable/capitolsteps"
             android:layout_alignParentEnd="true" />
 
+        <ImageView
+            android:id="@+id/biasImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/subredditTextView"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/liberty_wing"
+            android:layout_toStartOf="@+id/redditThumbnail" />
+
 
     </RelativeLayout>
 </TableLayout>

@@ -507,7 +507,7 @@ public class NewsFragment extends Fragment {
             if (codeWorked)
             {
                 listAdapter = new
-                        CustomList(getContext(), this.newsArticlesArrayList);
+                        CustomList(this.context, this.newsArticlesArrayList);
                 listView = (ListView) getView().findViewById(R.id.mainListView);
 
                 listView.setAdapter(listAdapter);

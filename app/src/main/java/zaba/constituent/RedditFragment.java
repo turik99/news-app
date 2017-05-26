@@ -26,24 +26,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class RedditFragment extends Fragment {
+public class RedditFragment extends Fragment
+{
 
     private RedditFragment.GetRedditArticles getRedditArticles;
 
-    public RedditFragment() {
+    public RedditFragment()
+    {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static RedditFragment newInstance() {
+    public static RedditFragment newInstance()
+    {
         RedditFragment fragment = new RedditFragment();
 
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         this.getRedditArticles = new RedditFragment.GetRedditArticles(getContext());
@@ -198,7 +202,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
         if (internetWorks)
         {
             listAdapter = new
-                    RedditCustomList(getContext(), newsArticlesArrayList);
+                    RedditCustomList(this.context, newsArticlesArrayList);
 
             listView=(ListView) getView().findViewById(R.id.redditListView);
             listView.setAdapter(listAdapter);
