@@ -1,14 +1,45 @@
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <TextView
+        android:padding="5dp"
+        android:id="@+id/tweetText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_text"
-        android:textSize="18dp"
-        android:layout_margin="10dp"
-        android:textColor="#000000"/>
+        android:text="this is a short. tweet MAKE AMERICA GREAT AGAIN!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@+id/textView3"
+        android:layout_toEndOf="@+id/imageView2" />
 
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donald Trump"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/imageView2">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/app_icon_alternate_unfinished" />
+
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/twitterTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView3"
+        android:text="5d" />
 </RelativeLayout>

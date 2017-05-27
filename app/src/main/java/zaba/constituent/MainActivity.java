@@ -13,24 +13,29 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener
-        {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView textView;
-            private LocationManager locationManager;
-            private LocationProvider provider;
-            @Override
+    private LocationManager locationManager;
+    private LocationProvider provider;
+
+    @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         textView = (TextView) findViewById(R.id.pickapane);
 
@@ -72,7 +77,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -80,20 +84,23 @@ public class MainActivity extends AppCompatActivity
 
         android.support.v4.app.Fragment fragment = null;
         Class fragmentClass = null;
-            textView.setText("");
+        textView.setText("");
 
 
-            if(item.getItemId() ==  R.id.nav_reddit)
-                fragmentClass = RedditFragment.class;
+        if (item.getItemId() == R.id.nav_reddit)
+            fragmentClass = RedditFragment.class;
 
-            if(item.getItemId() == R.id.nav_opinion)
-                fragmentClass = NewsFragment.class;
+        if (item.getItemId() == R.id.nav_opinion)
+            fragmentClass = NewsFragment.class;
 
-            if(item.getItemId() == R.id.nav_twitter)
-                fragmentClass = TwitterFragment.class;
+        if (item.getItemId() == R.id.nav_twitter)
+            fragmentClass = TwitterFragment.class;
 
-            if(item.getItemId() == R.id.nav_wire_services)
-                fragmentClass = WireFragment.class;
+        if (item.getItemId() == R.id.nav_wire_services)
+            fragmentClass = WireFragment.class;
+
+        if (item.getItemId() == R.id.settings)
+            fragmentClass = SettingsFragment.class;
 
         try {
             fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance();
@@ -111,10 +118,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 }
 
 

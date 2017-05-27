@@ -160,6 +160,12 @@ public class CustomList extends ArrayAdapter<String>
 
                 }
 
+                if (newsArticles.get(position).getDescription().isEmpty())
+                {
+                    holder.thumbnail.setMaxWidth(10);
+                    holder.thumbnail.setMaxHeight(10);
+                }
+
 
             }
         Log.v("custom list", "getView ran on time");

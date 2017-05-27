@@ -1,24 +1,33 @@
 package zaba.constituent;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SettingsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SettingsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SettingsFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
+
+    private ListView listView;
+    private String[] items = {
+            "News",
+            "Reddit",
+            "Twitter",
+            "Biased Sources"
+    };
+
+    private Integer[] imageId = {
+            R.drawable.newspaper,
+            R.drawable.reddit,
+            R.drawable.twitter,
+            R.drawable.bias
+    };
+
+
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -40,39 +49,60 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false);
-    }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+
 
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
+
+
+        SettingsCustomlist adapter = new
+                SettingsCustomlist(this.getActivity(), this.items, this.imageId);
+        listView=(ListView)view.findViewById(R.id.settingsListView);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                if (position == 0)
+                {
+                    Intent intent = new Intent(getActivity(), NewsSettings.class);
+                    startActivity(intent);
+                }
+
+                if (position == 1)
+                {
+                    Intent intent = new Intent(getActivity(), RedditSettings.class);
+                    startActivity(intent);
+
+                }
+                if (position == 2)
+                {
+                    Intent intent = new Intent(getActivity(), TwitterSettings.class);
+                    startActivity(intent);
+
+                }
+                if (position == 3 )
+                {
+                    Intent intent = new Intent(getActivity(), BiasSettings.class);
+                    startActivity(intent);
+
+                }
+
+            }
+        });
+
 
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

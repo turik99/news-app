@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -104,6 +105,7 @@ public class NewsFragment extends Fragment {
         private boolean codeWorked;
 
         private Context context;
+
         //Json data is held in these private strings
         private String apJsonString;
         private String bloombergJsonString;
@@ -147,6 +149,9 @@ public class NewsFragment extends Fragment {
         private Bitmap[] thumbnails;
 
         //the urls to each news source is held in these strings
+
+
+
         private String apArticleURL = "https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=c71b40ee96644c5ab0f06e63e56d59ff";
         private String bloombergArticleURL = "https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=c71b40ee96644c5ab0f06e63e56d59ff";
         private String financialtimesArticleURL = "https://newsapi.org/v1/articles?source=financial-times&sortBy=top&apiKey=c71b40ee96644c5ab0f06e63e56d59ff";
@@ -157,6 +162,10 @@ public class NewsFragment extends Fragment {
 
 
         private ArrayList<NewsArticle> newsArticlesArrayList;
+
+
+        private SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        private SharedPreferences.Editor editor = sharedPreferences.edit();
 
         public GetNewsArticles(Context contextArg) {
             this.context = contextArg;
@@ -183,13 +192,39 @@ public class NewsFragment extends Fragment {
                 apJsonString = Jsoup.connect(apArticleURL).ignoreContentType(true).execute().body();
 
                 try {
-                    apJsonString = Jsoup.connect(apArticleURL).ignoreContentType(true).execute().body();
-                    bloombergJsonString = Jsoup.connect(bloombergArticleURL).ignoreContentType(true).execute().body();
-                    //financialtimesJsonString =Jsoup.connect(financialtimesArticleURL).ignoreContentType(true).execute().body();
-                    reutersJsonString = Jsoup.connect(reutersArticleURL).ignoreContentType(true).execute().body();
-                    wallStreetJournalJsonString = Jsoup.connect(wallStreetJournalArticleURL).ignoreContentType(true).execute().body();
-                    newYorkTimesJsonString = Jsoup.connect(newYorkTimesArticleURl).ignoreContentType(true).execute().body();
-                    washingtonPostJsonString = Jsoup.connect(washingtonPostArticleURL).ignoreContentType(true).execute().body();
+
+
+                    if (sharedPreferences.getBoolean("ap", true))
+                    {
+                        apJsonString = Jsoup.connect(apArticleURL).ignoreContentType(true).execute().body();
+
+                    }
+                    if (sharedPreferences.getBoolean("bloomberg", true))
+                    {
+                        bloombergJsonString = Jsoup.connect(bloombergArticleURL).ignoreContentType(true).execute().body();
+
+                    }
+                    if (sharedPreferences.getBoolean("reuters", true))
+                    {
+                        reutersJsonString = Jsoup.connect(reutersArticleURL).ignoreContentType(true).execute().body();
+
+                    }
+                    if(sharedPreferences.getBoolean("wsj", true))
+                    {
+                        wallStreetJournalJsonString = Jsoup.connect(wallStreetJournalArticleURL).ignoreContentType(true).execute().body();
+
+                    }
+
+                    if (sharedPreferences.getBoolean("nyt", true))
+                    {
+                        newYorkTimesJsonString = Jsoup.connect(newYorkTimesArticleURl).ignoreContentType(true).execute().body();
+
+                    }
+                    if (sharedPreferences.getBoolean("wapo", true))
+                    {
+                        washingtonPostJsonString = Jsoup.connect(washingtonPostArticleURL).ignoreContentType(true).execute().body();
+
+                    }
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -201,13 +236,23 @@ public class NewsFragment extends Fragment {
                 //------------------------------------------------------------------------------------------
                 //getting the JSON Object from the string that was created by the received text from the website
                 try {
-                    this.apJsonObject = new JSONObject(apJsonString);
-                    this.bloombergJsonObject = new JSONObject(bloombergJsonString);
-                    //this.financialtimesJsonObject = new JSONObject(financialtimesJsonString);
-                    this.reutersJsonObject = new JSONObject(reutersJsonString);
-                    this.wallStreetJournalJsonObject = new JSONObject(wallStreetJournalJsonString);
-                    this.newYorkTimesJsonObject = new JSONObject(newYorkTimesJsonString);
-                    this.washingtonPostJsonObject = new JSONObject(washingtonPostJsonString);
+                    if (!apJsonString.isEmpty())
+                        this.apJsonObject = new JSONObject(apJsonString);
+                    if(!bloombergJsonString.isEmpty())
+                        this.bloombergJsonObject = new JSONObject(bloombergJsonString);
+
+                    if(!reutersJsonString.isEmpty())
+                        this.reutersJsonObject = new JSONObject(reutersJsonString);
+
+                    if(!wallStreetJournalJsonString.isEmpty())
+                        this.wallStreetJournalJsonObject = new JSONObject(wallStreetJournalJsonString);
+
+                    if (!newYorkTimesJsonString.isEmpty())
+                        this.newYorkTimesJsonObject = new JSONObject(newYorkTimesJsonString);
+
+                    if (!washingtonPostJsonString.isEmpty())
+                        this.washingtonPostJsonObject = new JSONObject(washingtonPostJsonString);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -220,6 +265,9 @@ public class NewsFragment extends Fragment {
                 //Getting the news articles array for further use
                 //------------------------------------------------------------------------------------------
                 try {
+
+
+
                     JSONArray apArticleJsonArray = this.apJsonObject.getJSONArray("articles");
                     JSONArray bloombergJsonArray = this.bloombergJsonObject.getJSONArray("articles");
 //                JSONArray ftJsonArray = this.financialtimesJsonObject.getJSONArray("articles");
@@ -465,6 +513,7 @@ public class NewsFragment extends Fragment {
                         newsArticleObjects[i - 1].setDatePublished(datePublished.get(i - 1));
                     }
 
+
                     for (int i = 1; i <= this.newsArticles.length(); i++) {
                         newsArticleObjects[i - 1].setSource((String) sourcesList.get(i - 1));
                     }
@@ -474,6 +523,8 @@ public class NewsFragment extends Fragment {
 
 
                     for (int i = 0; i < newsArticleObjects.length; i++) {
+
+
 
                         newsArticlesArrayList.add(newsArticleObjects[i]);
 
