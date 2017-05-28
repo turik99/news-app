@@ -1,6 +1,7 @@
 package zaba.constituent;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,13 @@ import android.widget.TextView;
 
 public class SettingsCustomlist extends ArrayAdapter<String>
 {
-    private Activity context;
+    private Context context;
     private String[] items;
     private Integer[] images;
-    public SettingsCustomlist(Activity contextArg, String[] itemsArg, Integer[] imagesArg)
+    public SettingsCustomlist(Context contextArg, String[] itemsArg, Integer[] imagesArg)
     {
         super(contextArg, R.layout.settings_list_single);
-        this.context = contextArg;
+        this.context =  contextArg;
         this.items = itemsArg;
         this.images = imagesArg;
     }
@@ -35,7 +36,7 @@ public class SettingsCustomlist extends ArrayAdapter<String>
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
+        LayoutInflater inflater = LayoutInflater.from(getContext());
         View rowView= inflater.inflate(R.layout.settings_list_single, null, true);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.settingsItem);
 

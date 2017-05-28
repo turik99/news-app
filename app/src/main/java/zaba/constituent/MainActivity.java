@@ -1,6 +1,7 @@
 package zaba.constituent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
 
         textView = (TextView) findViewById(R.id.pickapane);
 
@@ -100,7 +101,11 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = WireFragment.class;
 
         if (item.getItemId() == R.id.settings)
-            fragmentClass = SettingsFragment.class;
+        {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        }
+
 
         try {
             fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance();
@@ -109,8 +114,11 @@ public class MainActivity extends AppCompatActivity
         }
 
         // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        if (item.getItemId() != R.id.settings){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -26,7 +26,8 @@
         <activity android:name=".NewsSettings" />
         <activity android:name=".RedditSettings" />
         <activity android:name=".TwitterSettings" />
-        <activity android:name=".BiasSettings"></activity>
+        <activity android:name=".BiasSettings" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

@@ -91,7 +91,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
 {
 
     private boolean internetWorks;
-    private String redditURL = "http://reddit.com/r/libertarian+liberal+conservative+republican+esist+progressive+ourpresident+the_donald.json";
+    private String redditURL = "http://reddit.com/r/libertarian+liberal+conservative+republican+esist+progressive+ourpresident.json";
     private String redditJSONString;
     private JSONObject redditObject;
     private JSONArray articlesArray;
@@ -202,7 +202,7 @@ public class GetRedditArticles extends AsyncTask<String, String, String>
         if (internetWorks)
         {
             listAdapter = new
-                    RedditCustomList(this.context, newsArticlesArrayList);
+                    RedditCustomList(context, newsArticlesArrayList);
 
             listView=(ListView) getView().findViewById(R.id.redditListView);
             listView.setAdapter(listAdapter);
