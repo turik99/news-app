@@ -1,5 +1,6 @@
 package zaba.constituent;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -9,11 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Set;
 
+import twitter4j.MediaEntity;
 import twitter4j.Status;
+import twitter4j.TweetEntity;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -46,6 +56,7 @@ public class TwitterFragment extends Fragment {
         GetTweets getTweets = new GetTweets();
         getTweets.execute();
 
+        Toast.makeText(getContext(), "Note: this feature is currently unfinished", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -57,26 +68,31 @@ public class TwitterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_twitter, container, false);
 
 
+    }
+
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        AdView adView = (AdView) view.findViewById(R.id.twitterAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        adView.loadAd(adRequest);
 
     }
 
-    public void onViewCreated(View view, Bundle savedInstanceState)
-    {
 
-    }
+    public class GetTweets extends AsyncTask<String, String, String> {
+        private ArrayList<twitter4j.Status> tweets = new ArrayList<twitter4j.Status>();
+        private ProgressDialog dialog;
+        private ArrayList<Tweet> tweetArray;
+        protected void onPreExecute() {
 
-
-    public class GetTweets extends AsyncTask<String, String, String>
-    {
-
-        protected void onPreExecute()
-        {
-
+            dialog = new ProgressDialog(getContext());
+            dialog.setMessage("Loading tweets...");
+            dialog.show();
         }
 
         @Override
         protected String doInBackground(String... params) {
-
 
 
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
@@ -89,30 +105,68 @@ public class TwitterFragment extends Fragment {
             TwitterFactory twitterFactory = new TwitterFactory(configurationBuilder.build());
 
             Twitter twitter = twitterFactory.getInstance();
+
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
             try {
-                ArrayList<twitter4j.Status> tweets = (ArrayList) twitter.getUserTimeline("realDonaldTrump");
-                tweets.add(  twitter.getUserTimeline("BernieSanders").get(10));
 
-            } catch (TwitterException e) {
-                e.printStackTrace();
+                if (sharedPreferences.getBoolean("bernie", true)) {
+                    tweets.addAll(twitter.getUserTimeline("berniesanders"));
+                }
+
+                if (sharedPreferences.getBoolean("trump", true)) {
+                    tweets.addAll(twitter.getUserTimeline("realDonaldTrump"));
+
+                }
+
+                if (sharedPreferences.getBoolean("hillary", true)) {
+                    tweets.addAll(twitter.getUserTimeline("HillaryClinton"));
+
+                }
+                if (sharedPreferences.getBoolean("chuckgrassley", true)) {
+                    tweets.addAll(twitter.getUserTimeline("ChuckGrassley"));
+                }
+
+                if (sharedPreferences.getBoolean("chuckschumer", true)) {
+                    tweets.addAll(twitter.getUserTimeline("chuckschumer"));
+                }
+
+                tweetArray = new ArrayList<Tweet>();
+
+                for ( int i = 0; i<tweets.size(); i++)
+                {
+                    tweetArray.add(new Tweet(tweets.get(i).getUser().getName(),
+                        tweets.get(i).getText(),
+                        tweets.get(i).getUser()
+                                .getProfileImageURL(),
+                        tweets.get(i).getCreatedAt()
+                                .toString()));
+
+                }
+
+
+                Collections.sort(tweetArray);
             }
+            catch (Exception e) {
 
-
-
+            }
 
 
             return null;
         }
 
-        protected void onPostExecute(String string)
-        {
+        protected void onPostExecute(String string) {
+
+            ListView listView = (ListView) getView().findViewById(R.id.twitterListView);
+            TwitterCustomList adapter = new TwitterCustomList(getActivity(), tweetArray );
+            listView.setAdapter(adapter);
+            dialog.dismiss();
 
         }
 
     }
-
-
-
 
 
 }

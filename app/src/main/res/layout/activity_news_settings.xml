@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="zaba.constituent.NewsSettings">
+    
+
 
     <TextView
         android:id="@+id/textView4"
@@ -15,7 +17,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp" />
 
     <CheckBox
         android:onClick="nytClick"
@@ -27,7 +30,8 @@
         android:checked="true"
         android:text="New York Times"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:layout_marginStart="8dp" />
 
     <CheckBox
         android:onClick="wapoClick"
@@ -39,7 +43,8 @@
         android:checked="true"
         android:text="Washington Post"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nytCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/nytCheckBox"
+        android:layout_marginStart="8dp" />
 
     <CheckBox
         android:onClick="wsjClick"
@@ -51,7 +56,8 @@
         android:checked="true"
         android:text="Wall Street Journal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wapoCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/wapoCheckBox"
+        android:layout_marginStart="8dp" />
 
     <CheckBox
         android:onClick="apClick"
@@ -63,7 +69,8 @@
         android:checked="true"
         android:text="Associated Press"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wsjCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/wsjCheckBox"
+        android:layout_marginStart="8dp" />
 
     <CheckBox
         android:onClick="bloombergClick"
@@ -75,7 +82,8 @@
         android:checked="true"
         android:text="Bloomberg"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/apCheckBox"
+        android:layout_marginStart="8dp" />
 
     <CheckBox
         android:onClick="reutersClick"
@@ -87,15 +95,7 @@
         android:checked="true"
         android:text="Reuters"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bloombergCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/bloombergCheckBox"
+        android:layout_marginStart="8dp" />
 
-    <Switch
-        android:id="@+id/imagesSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Load Images"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reutersCheckBox" />
 </android.support.constraint.ConstraintLayout>

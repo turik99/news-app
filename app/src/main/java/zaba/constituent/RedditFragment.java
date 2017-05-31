@@ -74,9 +74,6 @@ public class RedditFragment extends Fragment
     {
 
 
-
-
-
         AdView adView = (AdView) view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
 

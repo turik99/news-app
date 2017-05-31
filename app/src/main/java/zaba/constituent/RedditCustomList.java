@@ -73,50 +73,41 @@ public class RedditCustomList extends ArrayAdapter<String> {
         String subreddit = holder.subreddit.getText().toString();
 
         if (subreddit.equals("r/Libertarian") ) {
-            holder.subreddit.setTextColor(Color.parseColor("#ffc107"));
             holder.biasImage.setImageResource(R.drawable.liberty_wing);
         }
 
         if(subreddit.equals("r/Liberal")) {
-            holder.subreddit.setTextColor(Color.BLUE);
             holder.biasImage.setImageResource(R.drawable.left_wing);
         }
 
         if (subreddit.equals("r/Conservative") ) {
-            holder.subreddit.setTextColor(Color.RED);
             holder.biasImage.setImageResource(R.drawable.right_wing);
         }
 
         if (subreddit.equals("r/progressive") ) {
-            holder.subreddit.setTextColor(Color.BLUE);
             holder.biasImage.setImageResource(R.drawable.left_wing);
         }
 
         if(subreddit.equals("r/Republican")) {
-            holder.subreddit.setTextColor(Color.RED);
             holder.biasImage.setImageResource(R.drawable.right_wing);
         }
 
         if(subreddit.equals("r/Democrat")) {
-            holder.subreddit.setTextColor(Color.BLUE);
             holder.biasImage.setImageResource(R.drawable.left_wing);
         }
         if(subreddit.equals("r/esist")) {
-            holder.subreddit.setTextColor(Color.BLUE);
             holder.biasImage.setImageResource(R.drawable.left_wing);
         }
 
         if(subreddit.equals("r/The_Donald")) {
-            holder.subreddit.setTextColor(Color.RED);
             holder.biasImage.setImageResource(R.drawable.right_wing);
         }
 
         if(subreddit.equals("r/OurPresident")) {
-            holder.subreddit.setTextColor(Color.BLUE);
             holder.biasImage.setImageResource(R.drawable.left_wing);
         }
 
-        Log.v("custom list", "all this shit ran");
+        Log.v("custom list", "all this  ran");
 
 
         holder.thumbnail = (ImageView) rowView.findViewById(R.id.redditThumbnail);

@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="zaba.constituent.MainActivity">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context="zaba.constituent.WireFragment">
 
     <ListView
+        android:divider="@null"
+        android:background="#DDDDDD"
         android:id="@+id/fakeNewsListView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:layout_above="@+id/wireAdView" />
 
     <com.google.android.gms.ads.AdView

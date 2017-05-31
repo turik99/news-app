@@ -27,7 +27,8 @@
         <activity android:name=".RedditSettings" />
         <activity android:name=".TwitterSettings" />
         <activity android:name=".BiasSettings" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".CongressmanActivity"></activity>
     </application>
 
 </manifest>

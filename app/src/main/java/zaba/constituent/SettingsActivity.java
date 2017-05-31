@@ -24,7 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Integer[] imageId = {
             R.drawable.newspaper,
             R.drawable.reddit,
-            R.drawable.twitter,
+            R.drawable.twitter
     };
 
 
@@ -32,10 +32,12 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
 
+        final View rootView = getWindow().getDecorView().getRootView();
         SettingsCustomlist adapter = new
                 SettingsCustomlist(this, this.items, this.imageId);
-        listView = (ListView) findViewById(R.id.settingsListview1);
+        listView = (ListView) rootView.findViewById(R.id.settingsListview1);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -67,9 +69,16 @@ public class SettingsActivity extends AppCompatActivity {
 
                 }
 
+                
+
             }
         });
+
+
+
     }
+
+
 
 
 

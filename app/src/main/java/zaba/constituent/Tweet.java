@@ -1,10 +1,14 @@
 package zaba.constituent;
 
+import android.support.annotation.NonNull;
+
+import java.util.Comparator;
+
 /**
  * Created by ericz on 5/26/2017.
  */
 
-public class Tweet {
+public class Tweet implements Comparable<Tweet> {
 
     private String username;
     private String tweetText;
@@ -34,5 +38,10 @@ public class Tweet {
     public String getDatePublished()
     {
         return datePublished;
+    }
+
+
+    public int compareTo(Tweet two) {
+        return getDatePublished().compareTo(two.getDatePublished());
     }
 }

@@ -9,11 +9,11 @@
     android:id="@+id/list_single1">
 
     <android.support.v7.widget.CardView
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:elevation="@dimen/cardview_default_elevation"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -21,6 +21,9 @@
 
 
         <RelativeLayout
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:id="@+id/list_single"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,6 +31,9 @@
 
 
             <ImageView
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:padding="5dp"
                 android:id="@+id/newsThumbnail"
                 android:layout_width="200dp"
@@ -41,9 +47,10 @@
                 android:layout_alignParentEnd="true"/>
 
             <TextView
-                android:fontFamily="serif"
-
-                android:padding="3dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:padding="5dp"
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +60,10 @@
                 android:layout_alignParentStart="true"/>
 
             <TextView
-                android:padding="3dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:padding="5dp"
                 android:maxWidth="200dp"
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
@@ -65,27 +75,36 @@
                 android:layout_toStartOf="@+id/newsThumbnail"/>
 
             <ImageView
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:id="@+id/newsSourceImageView"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView2"
                 android:adjustViewBounds="true"
-                android:maxHeight="50dp"
-                android:padding="4dp"
+                android:padding="5dp"
                 app:srcCompat="@drawable/bloomberg_logo" />
 
             <TextView
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:id="@+id/newsSourceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/newsSourceImageView"
-                android:layout_toEndOf="@+id/newsSourceImageView"
                 android:padding="4dp"
                 android:text="News Source |"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_below="@+id/textView2"
+                android:layout_toEndOf="@+id/newsSourceImageView"
+                android:layout_marginTop="10dp" />
 
             <TextView
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:id="@+id/biasTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,7 +115,11 @@
                 android:text="amount of bias"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
+
+
         </RelativeLayout>
+
+
 
 
     </android.support.v7.widget.CardView>

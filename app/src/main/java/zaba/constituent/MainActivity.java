@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
 
         textView = (TextView) findViewById(R.id.pickapane);
 
@@ -77,7 +78,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -100,11 +100,9 @@ public class MainActivity extends AppCompatActivity
         if (item.getItemId() == R.id.nav_wire_services)
             fragmentClass = WireFragment.class;
 
-        if (item.getItemId() == R.id.settings)
-        {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-        }
+
+        if (item.getItemId() == R.id.congress)
+            fragmentClass = CongressFragment.class;
 
 
         try {
@@ -125,6 +123,15 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public boolean openSettings(MenuItem item)
+    {
+        Intent intent = new Intent(this, NewsSettings.class);
+        startActivity(intent);
+
+        return true;
+    }
+
+
 
 
 }

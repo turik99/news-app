@@ -3,6 +3,7 @@ package zaba.constituent;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class CustomList extends ArrayAdapter<String>
         return newsArticles.size();
     }
 
+
     @NonNull
     public View getView(int position, View rowView, ViewGroup parent)
     {
@@ -67,7 +69,10 @@ public class CustomList extends ArrayAdapter<String>
         }
 
         holder.titleText.setText(newsArticles.get(position).getTitle());
+        holder.titleText.setTypeface(Typeface.createFromAsset(getContext()
+                .getAssets(), "RobotoSlab-Regular.ttf"));
         holder.sourceText.setText(newsArticles.get(position).getSource());
+
 
 
         String source = newsArticles.get(position).getSource();
@@ -184,6 +189,7 @@ public class CustomList extends ArrayAdapter<String>
         ImageView thumbnail;
         TextView description;
     }
+
 
 
 
