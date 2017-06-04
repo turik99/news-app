@@ -9,10 +9,12 @@
 
 
     <ImageView
-        android:src="@drawable/capitolsteps"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/capitoldusk"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Stories from newsapi.org | Reddit feed from reddit.com"

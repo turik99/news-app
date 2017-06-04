@@ -5,44 +5,37 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
+        android:clickable="true"
+        android:id="@+id/congressListCardView"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"
+        >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/congressmanImage"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <TextView
-                android:padding="2dp"
+                android:padding="5dp"
                 android:id="@+id/congressmanName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/congressmanImage"
                 android:text="Senator Android"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:padding="2dp"
-
+                android:padding="5dp"
                 android:id="@+id/congressmanParty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/congressmanName"
-                android:layout_toEndOf="@+id/congressmanImage"
                 android:text="(D)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
-                android:padding="2dp"
+                android:padding="5dp"
 
                 android:id="@+id/congressmanState"
                 android:layout_width="wrap_content"
@@ -51,6 +44,7 @@
                 android:layout_toEndOf="@+id/congressmanParty"
                 android:text="California"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     tools:context="zaba.constituent.CongressFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TabHost
         android:id="@+id/tabHost"
         android:layout_width="match_parent"
@@ -17,6 +15,7 @@
             android:orientation="vertical">
 
             <TabWidget
+
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -31,7 +30,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
+                    <SearchView
+                        android:id="@+id/houseListSearchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </SearchView>
+
                     <ListView
+                        android:background="#DDDDDD"
+                        android:divider="@null"
                         android:id="@+id/congressmanList"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -44,7 +53,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                    <SearchView
+                        android:id="@+id/senatorListSearchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </SearchView>
+
                     <ListView
+                        android:divider="@null"
+                        android:background="#DDDDDD"
+
                         android:id="@+id/senatorList"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -58,7 +77,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                    <SearchView
+                        android:id="@+id/billListSearchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </SearchView>
+
                     <ListView
+                        android:divider="@null"
+                        android:background="#DDDDDD"
+
                         android:id="@+id/billList"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -67,20 +96,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:id="@+id/tab4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
-                    <ListView
-                        android:id="@+id/floorUpdateList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    </ListView>
-
-                </LinearLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
