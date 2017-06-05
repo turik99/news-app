@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 import org.apache.http.HttpResponse;
@@ -54,17 +56,12 @@ public class CongressmanActivity extends AppCompatActivity {
         GetCongressmanData getCongressmanData = new GetCongressmanData(api);
         getCongressmanData.execute();
 
-        String[] data = {
-                "Recent Votes",
-                "Missed Votes",
-                "Sponsored Bills"
 
-        };
 
-        Spinner s = (Spinner) findViewById(R.id.congressmanActivitySpinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item, data);
-        s.setAdapter(adapter);
+        AdView adView = (AdView) findViewById(R.id.congressAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
     }
 
     protected void congressmanTwitterClick(View view)
@@ -192,11 +189,24 @@ public class CongressmanActivity extends AppCompatActivity {
 
                 for (int i = 0; i< jsonArray.length(); i++)
                 {
-                    bills[i] = (new Bill("HR 2030 EXAMPLE",
-                            jsonArray.getJSONObject(i).getString("description"),
-                            jsonArray.getJSONObject(i).getString("question"),
-                            jsonArray.getJSONObject(i).getString("position")
-                    ));
+                    if (jsonArray.getJSONObject(i).getString("number") != null)
+                    {
+                        bills[i] = (new Bill(jsonArray.getJSONObject(i).getString("number"),
+                                jsonArray.getJSONObject(i).getString("description"),
+                                jsonArray.getJSONObject(i).getString("question"),
+                                jsonArray.getJSONObject(i).getString("position")
+                        ));
+
+                    }
+                    else
+                    {
+                        bills[i] = (new Bill(jsonArray.getJSONObject(i).getString("number"),
+                                jsonArray.getJSONObject(i).getString("description"),
+                                jsonArray.getJSONObject(i).getString("question"),
+                                jsonArray.getJSONObject(i).getString("position")
+                        ));
+
+                    }
                     Log.v("Billstest", bills[i].getName());
                 }
 

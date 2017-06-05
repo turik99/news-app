@@ -77,9 +77,11 @@ public class VotesCustomList extends ArrayAdapter {
                 TextView billQuestion = (TextView) dialog.findViewById(R.id.dialogBillQuestion);
                 TextView billDescript = (TextView) dialog.findViewById(R.id.dialogBillDescription);
                 TextView billName = (TextView) dialog.findViewById(R.id.dialogBillName);
+                TextView voteText = (TextView) dialog.findViewById(R.id.dialogVoteText);
 
                 billQuestion.setText(bills[position].getQuestion());
                 billDescript.setText(bills[position].getDescription());
+                voteText.setText(bills[position].getVote());
 
                 dialog.show();
             }
