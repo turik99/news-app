@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity
         if (item.getItemId() == R.id.nav_opinion)
             fragmentClass = NewsFragment.class;
 
-        if (item.getItemId() == R.id.nav_twitter)
-            fragmentClass = TwitterFragment.class;
+//        if (item.getItemId() == R.id.nav_twitter)
+//            fragmentClass = TwitterFragment.class;
 
         if (item.getItemId() == R.id.nav_wire_services)
             fragmentClass = WireFragment.class;

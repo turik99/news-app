@@ -41,8 +41,7 @@ public class CongressmanActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         String api;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_congressman);
@@ -57,32 +56,27 @@ public class CongressmanActivity extends AppCompatActivity {
         getCongressmanData.execute();
 
 
-
         AdView adView = (AdView) findViewById(R.id.congressAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
     }
 
-    protected void congressmanTwitterClick(View view)
-    {
+    protected void congressmanTwitterClick(View view) {
         Button button = (Button) findViewById(R.id.congressActivityOpenTwitter);
-        try
-        {
+        try {
             Uri uri = Uri.parse("googlechrome://navigate?url=" + "https://www.twitter.com/"
                     + button.getText().toString().substring(1, button.getText().toString().length()));
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        } catch (ActivityNotFoundException e)
-        {
+        } catch (ActivityNotFoundException e) {
             // Chrome is probably not installed
         }
 
     }
 
-    private class GetCongressmanData extends AsyncTask<String, String, String>
-    {
+    private class GetCongressmanData extends AsyncTask<String, String, String> {
 
         private String api;
         private String twitterName;
@@ -103,22 +97,20 @@ public class CongressmanActivity extends AppCompatActivity {
         private boolean twitterWorked;
 
 
-        public GetCongressmanData (String apiArg)
-        {
-            this.api=apiArg;
+        public GetCongressmanData(String apiArg) {
+            this.api = apiArg;
         }
-        protected void onPreExecute()
-        {
+
+        protected void onPreExecute() {
             this.nameText = (TextView) findViewById(R.id.congressmanActivityName);
             this.twitterText = (TextView) findViewById(R.id.congressActivityOpenTwitter);
             this.profileImage = (ImageView) findViewById(R.id.congressmanActivityProfileImage);
         }
 
         @Override
-        protected String doInBackground(String... params)
-        {
+        protected String doInBackground(String... params) {
 
-            try{
+            try {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpGet memberGet = new HttpGet();
                 URI senateURL = new URI(this.api);
@@ -134,7 +126,7 @@ public class CongressmanActivity extends AppCompatActivity {
 
                 Log.v("congress class", jsonObject.getJSONArray("results").getJSONObject(0).getString("first_name"));
 
-                try{
+                try {
                     ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
                     configurationBuilder.setDebugEnabled(true)
                             .setOAuthConsumerKey("e5iNBbqkhKEn5siDd5WBOb6wz")
@@ -148,9 +140,7 @@ public class CongressmanActivity extends AppCompatActivity {
                     this.twitterURL = twitter.showUser(twitterName).getBiggerProfileImageURL();
                     twitterWorked = true;
 
-                }
-                catch (TwitterException e)
-                {
+                } catch (TwitterException e) {
                     e.printStackTrace();
                     twitterWorked = false;
 
@@ -162,15 +152,12 @@ public class CongressmanActivity extends AppCompatActivity {
                 //You could be a hypercard developer!
 
 
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
-            try
-            {
+            try {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpGet memberGet = new HttpGet();
                 URI votesURL = new URI(this.api.substring(0, 54) + "/votes.json");
@@ -187,64 +174,48 @@ public class CongressmanActivity extends AppCompatActivity {
                 Log.v("Congress test votes", String.valueOf(jsonArray.length()));
 
 
-                for (int i = 0; i< jsonArray.length(); i++)
-                {
-                    if (jsonArray.getJSONObject(i).getString("number") != null)
-                    {
-                        bills[i] = (new Bill(jsonArray.getJSONObject(i).getString("number"),
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    try {
+                        bills[i] = (new Bill(jsonArray.getJSONObject(i).getJSONObject("bill").getString("number"),
                                 jsonArray.getJSONObject(i).getString("description"),
                                 jsonArray.getJSONObject(i).getString("question"),
                                 jsonArray.getJSONObject(i).getString("position")
                         ));
 
-                    }
-                    else
-                    {
-                        bills[i] = (new Bill(jsonArray.getJSONObject(i).getString("number"),
-                                jsonArray.getJSONObject(i).getString("description"),
-                                jsonArray.getJSONObject(i).getString("question"),
-                                jsonArray.getJSONObject(i).getString("position")
-                        ));
+                    } catch (Exception e) {
+//                        bills[i] = (new Bill(" ",
+//                                jsonArray.getJSONObject(i).getString("description"),
+//                                jsonArray.getJSONObject(i).getString("question"),
+//                                jsonArray.getJSONObject(i).getString("position")
+//                        ));
 
+                        e.printStackTrace();
                     }
+
                     Log.v("Billstest", bills[i].getName());
                 }
 
 
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             return null;
         }
 
-        protected void onPostExecute(String string)
-        {
+        protected void onPostExecute(String string) {
             this.nameText.setText(this.name);
 
-            if (twitterWorked)
-            {
+            if (twitterWorked) {
                 this.twitterText.setText("@" + this.twitterName);
                 Picasso.with(getApplicationContext()).load(this.twitterURL).into(profileImage);
 
-            }
-            else {
+
+            } else {
+                this.twitterText.setVisibility(View.INVISIBLE);
+
                 this.twitterText.setMaxWidth(0);
                 this.twitterText.setMaxHeight(0);
             }
@@ -253,7 +224,6 @@ public class CongressmanActivity extends AppCompatActivity {
             ListView listView = (ListView) findViewById(R.id.congressmanActivityVotesListView);
 
             listView.setAdapter(adapter);
-
 
 
         }

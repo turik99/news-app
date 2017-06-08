@@ -82,11 +82,11 @@ public class CongressFragment extends Fragment {
         spec.setIndicator("Senators");
         host.addTab(spec);
 
-        //Tab 3
-        spec = host.newTabSpec("Tab Three");
-        spec.setContent(R.id.tab3);
-        spec.setIndicator("Bills");
-        host.addTab(spec);
+//        //Tab 3
+//        spec = host.newTabSpec("Tab Three");
+//        spec.setContent(R.id.tab3);
+//        spec.setIndicator("Bills");
+//        host.addTab(spec);
 
         return view;
 

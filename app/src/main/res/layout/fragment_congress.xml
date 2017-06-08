@@ -15,7 +15,6 @@
             android:orientation="vertical">
 
             <TabWidget
-
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -31,12 +30,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <SearchView
-                        android:id="@+id/houseListSearchView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </SearchView>
 
                     <ListView
                         android:background="#DDDDDD"
@@ -53,12 +46,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <SearchView
-                        android:id="@+id/senatorListSearchView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </SearchView>
 
                     <ListView
                         android:divider="@null"
@@ -77,12 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <SearchView
-                        android:id="@+id/billListSearchView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
-                    </SearchView>
 
                     <ListView
                         android:divider="@null"
